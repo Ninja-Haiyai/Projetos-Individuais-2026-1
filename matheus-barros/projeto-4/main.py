@@ -13,6 +13,11 @@ from __future__ import annotations
 import sys
 import os
 
+# Console do Windows usa cp1252 por padrão e quebra com acentos/setas em print()
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+
 from dotenv import load_dotenv
 
 load_dotenv()
